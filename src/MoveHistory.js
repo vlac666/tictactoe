@@ -9,7 +9,6 @@ export function MoveHistory({ history, jumpTo, currentStep }) {
   const [ /*ignore initial step */, ...actualMoves] = history;
 
   const moves = actualMoves.map((step, index) => {
-    //const desc = stepNumber ? "Go to move #" + stepNumber : <b>Reset Game</b>;
     const stepNumber = index + 1; //becasue we trimmed out step 0
     const desc = "Go to move #" + stepNumber;
     const row = Math.floor(step.clickIndex / COL_COUNT) + 1;
@@ -25,7 +24,7 @@ export function MoveHistory({ history, jumpTo, currentStep }) {
     );
   });
 
-  if (direction != ASC) {
+  if (direction !== ASC) {
     moves.reverse();
   }
 

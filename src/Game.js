@@ -43,7 +43,6 @@ export class Game extends React.Component {
   }
 
   render() {
-    console.log("game.render()");
     const history = this.state.history;
     const current = history[this.state.stepNumber];
 
