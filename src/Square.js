@@ -1,8 +1,9 @@
 import React from "react";
 
-export function Square({ value, onClick }) {
+export function Square({ value, onClick, isWinningLine }) {
+  const className = "square" + (isWinningLine? " winSquare" : "");
   return (
-    <button className="square" onClick={onClick}>
+    <button className={className}  onClick={onClick}>
       {value}
     </button>
   );

@@ -9,6 +9,7 @@ export class Board extends React.Component {
     return (
       <Square
         key={"sqaure" + i}
+        isWinningLine={this.props.winningLine.includes(i)}
         value={this.props.squares[i]}
         onClick={() => {
           this.props.onClick(i);
