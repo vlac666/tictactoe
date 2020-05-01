@@ -13,7 +13,6 @@ export class Game extends React.Component {
         },
       ],
       stepNumber: 0,
-      xIsNext: true,
     };
   }
 
@@ -27,7 +26,7 @@ export class Game extends React.Component {
     }
 
     const squares = current.squares.slice();
-    squares[i] = this.state.xIsNext ? "X" : "O";
+    squares[i] = whosTurn(this.state.stepNumber);
     this.setState({
       history: history.concat([
         {
@@ -36,12 +35,11 @@ export class Game extends React.Component {
         },
       ]),
       stepNumber: history.length,
-      xIsNext: !this.state.xIsNext,
     });
   }
 
   jumpTo(step) {
-    this.setState({ stepNumber: step, xIsNext: step % 2 === 0 });
+    this.setState({ stepNumber: step });
   }
 
   render() {
@@ -56,7 +54,7 @@ export class Game extends React.Component {
     } else if (this.state.stepNumber === 9) {
       status = "*** DRAW ***";
     } else {
-      status = "Next player: " + (this.state.xIsNext ? "X" : "O");
+      status = "Next player: " + whosTurn(this.state.stepNumber);
     }
 
     return (
@@ -81,6 +79,10 @@ export class Game extends React.Component {
   }
 }
 
+function whosTurn(stepNumber) {
+  return stepNumber % 2 === 0 ? "X" : "O";
+}
+
 function calculateWinner(squares) {
   const lines = [
     [0, 1, 2],
@@ -92,6 +94,7 @@ function calculateWinner(squares) {
     [0, 4, 8],
     [2, 4, 6],
   ];
+
   for (let i = 0; i < lines.length; i++) {
     const [a, b, c] = lines[i];
     if (squares[a] && squares[a] === squares[b] && squares[a] === squares[c]) {
