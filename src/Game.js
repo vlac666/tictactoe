@@ -64,6 +64,7 @@ export class Game extends React.Component {
           <MoveHistory
             history={history}
             jumpTo={(stepNumber) => this.jumpTo(stepNumber)}
+            currentStep={this.state.stepNumber}
           />
         </div>
       </div>

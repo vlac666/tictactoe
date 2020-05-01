@@ -1,0 +1,7 @@
+.historyButton {
+    border-style: none;
+    background-color: transparent;
+}
+.currentStep {
+    border-style: outset;
+}
