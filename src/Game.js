@@ -1,6 +1,7 @@
 import React from "react";
 import { Board } from "./Board";
 import { MoveHistory } from "./MoveHistory";
+import "./Game.css";
 
 export class Game extends React.Component {
   constructor(props) {

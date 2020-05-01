@@ -1,5 +1,6 @@
 import React from "react";
 import { Square } from "./Square";
+import "./Board.css";
 
 export const ROW_COUNT = 3;
 export const COL_COUNT = 3;
