@@ -6,7 +6,7 @@ const ASC = true;
 
 export function MoveHistory({ history, jumpTo, currentStep }) {
   const [direction, setDirection] = useState(ASC);
-  const [reset, ...actualMoves] = history;
+  const [ /*ignore initial step */, ...actualMoves] = history;
 
   const moves = actualMoves.map((step, index) => {
     //const desc = stepNumber ? "Go to move #" + stepNumber : <b>Reset Game</b>;
