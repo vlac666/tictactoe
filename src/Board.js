@@ -1,6 +1,9 @@
 import React from "react";
 import { Square } from "./Square";
 
+export const ROW_COUNT = 3;
+export const COL_COUNT = 3;
+
 export class Board extends React.Component {
   renderSquare(i) {
     return (
@@ -15,15 +18,15 @@ export class Board extends React.Component {
 
   renderCols(rowNumber) {
     const cols = [];
-    for (let c = 0; c < 3; c++) {
-      cols.push(this.renderSquare(rowNumber * 3 + c));
+    for (let c = 0; c < COL_COUNT; c++) {
+      cols.push(this.renderSquare(rowNumber * COL_COUNT + c));
     }
     return cols;
   }
 
   renderRows() {
     const rows = [];
-    for (let r = 0; r < 3; r++) {
+    for (let r = 0; r < ROW_COUNT; r++) {
       rows.push(<div className="board-row">{this.renderCols(r)}</div>);
     }
     return rows;
