@@ -1,11 +1,11 @@
 import React, { useState } from "react";
-import "./MoveHistory.css";
+import "./MoveList.css";
 import { COL_COUNT } from "./Board";
 import { whosTurn } from "./Game";
 
 const ASC = true;
 
-export function MoveHistory({ history, jumpTo, currentStep }) {
+export function MoveList({ history, jumpTo, currentStep }) {
   const [direction, setDirection] = useState(ASC);
   const [, ...actualMoves] = history; //trim off initial state
 
