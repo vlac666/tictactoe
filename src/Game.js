@@ -2,6 +2,7 @@ import React from "react";
 import { Board } from "./Board";
 import { MoveHistory } from "./MoveHistory";
 import "./Game.css";
+import { Status } from "./Status";
 
 export class Game extends React.Component {
   constructor(props) {
@@ -45,16 +46,7 @@ export class Game extends React.Component {
   render() {
     const history = this.state.history;
     const current = history[this.state.stepNumber];
-
     const [winner, winningLine] = calculateWinner(current.squares);
-    let status;
-    if (winner) {
-      status = "Winner: " + winner;
-    } else if (this.state.stepNumber === 9) {
-      status = "*** DRAW ***";
-    } else {
-      status = "Next player: " + whosTurn(this.state.stepNumber);
-    }
 
     return (
       <div className="game">
@@ -66,7 +58,7 @@ export class Game extends React.Component {
           />
         </div>
         <div className="game-info">
-          <div>{status}</div>
+          <Status winner={winner} stepNumber={this.state.stepNumber}/>
           <MoveHistory
             history={history}
             jumpTo={(stepNumber) => this.jumpTo(stepNumber)}
@@ -78,7 +70,7 @@ export class Game extends React.Component {
   }
 }
 
-function whosTurn(stepNumber) {
+export function whosTurn(stepNumber) {
   return stepNumber % 2 === 0 ? "X" : "O";
 }
 
