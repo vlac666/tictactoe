@@ -1,3 +1,6 @@
+ul {
+    list-style-type: none;
+}
 .historyButton {
     border-style: none;
     background-color: transparent;

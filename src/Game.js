@@ -59,6 +59,7 @@ export class Game extends React.Component {
         </div>
         <div className="game-info">
           <Status winner={winner} stepNumber={this.state.stepNumber} />
+          <button onClick={() => this.jumpTo(0)}>Reset Game</button>
           <MoveHistory
             history={history}
             jumpTo={(stepNumber) => this.jumpTo(stepNumber)}
