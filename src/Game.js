@@ -58,7 +58,7 @@ export class Game extends React.Component {
           />
         </div>
         <div className="game-info">
-          <Status winner={winner} stepNumber={this.state.stepNumber}/>
+          <Status winner={winner} stepNumber={this.state.stepNumber} />
           <MoveHistory
             history={history}
             jumpTo={(stepNumber) => this.jumpTo(stepNumber)}
