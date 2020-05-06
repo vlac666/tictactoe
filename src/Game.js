@@ -3,18 +3,23 @@ import React, { useState } from "react";
 import { Board } from "./Board";
 import { MoveList } from "./MoveList";
 import { Status } from "./Status";
+import { Toggle } from "./Toggle";
 
 const initHistory = [{ squares: Array(9).fill(null) }];
 
 export function Game() {
   const [history, setHistory] = useState(initHistory);
   const [stepNumber, setStepNumber] = useState(0);
+  const [historySequenceToggle, setHistorySequenceToggle] = useState(true);
   const current = history[stepNumber];
   const [winner, winningLine] = calculateWinner(current.squares);
 
   return (
     <div className="game">
       <div className="game-board">
+        <button onClick={() => jumpTo(0)}>Reset Game</button>
+        <Status winner={winner} stepNumber={stepNumber} />
+
         <Board
           squares={current.squares}
           onClick={(i) => handleClick(i)}
@@ -22,12 +27,18 @@ export function Game() {
         />
       </div>
       <div className="game-info">
-        <Status winner={winner} stepNumber={stepNumber} />
-        <button onClick={() => jumpTo(0)}>Reset Game</button>
+        <Toggle
+          onText="Ascending"
+          offText="Descending"
+          togglePosition={historySequenceToggle}
+          onChange={(toggle) => setHistorySequenceToggle(toggle)}
+        />
+        <h3>Moves</h3>
         <MoveList
           history={history}
           jumpTo={(stepNumber) => jumpTo(stepNumber)}
           currentStep={stepNumber}
+          ascending={historySequenceToggle}
         />
       </div>
     </div>

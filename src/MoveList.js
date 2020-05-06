@@ -1,12 +1,9 @@
-import React, { useState } from "react";
+import React from "react";
 import "./MoveList.css";
 import { COL_COUNT } from "./Board";
 import { whosTurn } from "./Game";
 
-const ASC = true;
-
-export function MoveList({ history, jumpTo, currentStep }) {
-  const [direction, setDirection] = useState(ASC);
+export function MoveList({ history, jumpTo, currentStep, ascending = true }) {
   const [, ...actualMoves] = history; //trim off initial state
 
   const moves = actualMoves.map((step, index) => {
@@ -24,16 +21,9 @@ export function MoveList({ history, jumpTo, currentStep }) {
     );
   });
 
-  if (direction !== ASC) {
+  if (!ascending) {
     moves.reverse();
   }
 
-  return (
-    <>
-      <button onClick={() => setDirection(!direction)}>
-        {direction === ASC ? "Descending" : "Ascending"}
-      </button>
-      <ul>{moves}</ul>
-    </>
-  );
+  return <ul>{moves}</ul>;
 }
