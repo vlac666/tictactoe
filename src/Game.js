@@ -66,14 +66,14 @@ export function Game() {
     setStepNumber(currentHistory.length);
   }
 
-  function jumpTo(step) {
+  function jumpTo(step) { 
     setStepNumber(step);
   }
 }
 
 export function whosTurn(stepNumber) {
   return stepNumber % 2 === 0 ? "X" : "O";
-}
+} 
 
 function calculateWinner(squares) {
   const lines = [

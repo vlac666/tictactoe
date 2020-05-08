@@ -25,5 +25,5 @@ export function MoveList({ history, jumpTo, currentStep, ascending = true }) {
     moves.reverse();
   }
 
-  return <ul>{moves}</ul>;
+  return <ol reversed={!ascending}>{moves}</ol>;
 }
