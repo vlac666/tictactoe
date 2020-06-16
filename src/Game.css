@@ -1,13 +1,45 @@
-.status {
-    margin-bottom: 10px;
-  }
-  
+h3 {
+  margin: 1vmin;
+}
+ol {
+  margin-top: 1vmin;
+}
+
+.game {
+  display: grid;
+  grid-template-areas:
+    "game-board"
+    "game-controls"
+    "game-info";
+  grid-gap: 1vmin;
+  max-width: 100vmin;
+}
+
+.game-info {
+  grid-area: game-info;
+  border-style: none;
+  padding-left: 3vmin;
+}
+
+.game-controls {
+  grid-area: game-controls;
+  display: flex;
+  justify-content: space-between;
+  border-style: none;
+}
+.game-board {
+  grid-area: game-board;
+  border-style: none;
+}
+
+.resetButton {
+  font-size: 1em;
+}
+
+@media only screen and (min-width: 460px) {
   .game {
-    display: flex;
-    flex-direction: row;
+    grid-template-areas:
+      "game-info game-controls"
+      "game-info game-board";
   }
-  
-  .game-info {
-    margin-left: 20px;
-  }
-  
+}

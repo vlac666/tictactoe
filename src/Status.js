@@ -1,15 +1,13 @@
 import React from "react";
-import { ROW_COUNT, COL_COUNT } from "./Board";
-import { whosTurn } from "./Game";
 
-export function Status({ winner, stepNumber }) {
+export function Status({ winningPlayer,  isDraw, nextPlayer }) {
   let status;
-  if (winner) {
-    status = "Winner: " + winner;
-  } else if (stepNumber === ROW_COUNT * COL_COUNT) {
+  if (winningPlayer) {
+    status = "Winner: " + winningPlayer;
+  } else if (isDraw) {
     status = "*** DRAW ***";
   } else {
-    status = "Next player: " + whosTurn(stepNumber);
+    status = "Next player: " + nextPlayer;
   }
-  return <div>{status}</div>;
+  return <>{status}</>;
 }

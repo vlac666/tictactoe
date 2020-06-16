@@ -7,41 +7,59 @@ import { Toggle } from "./Toggle";
 
 const initHistory = [{ squares: Array(9).fill(null) }];
 
-export function Game() {
+export const Gayme = "Gayme";
+
+export default function Game() {
   const [history, setHistory] = useState(initHistory);
   const [stepNumber, setStepNumber] = useState(0);
   const [historySequenceToggle, setHistorySequenceToggle] = useState(true);
   const current = history[stepNumber];
   const [winner, winningLine] = calculateWinner(current.squares);
+  const rowCount = 3;
+  const colCount = 3;
 
   return (
-    <div className="game">
-      <div className="game-board">
-        <button onClick={() => jumpTo(0)}>Reset Game</button>
-        <Status winner={winner} stepNumber={stepNumber} />
-
-        <Board
-          squares={current.squares}
-          onClick={(i) => handleClick(i)}
-          winningLine={winningLine}
-        />
+    <React.Fragment>
+      <div className="game">
+        <div className="game-controls">
+          <div className="statusMsg">
+            <Status
+              winningPlayer={winner}
+              isDraw={stepNumber >= rowCount * colCount}
+              nextPlayer={whosTurn(stepNumber)}
+            />
+          </div>
+          <button onClick={() => jumpTo(0)} className="resetButton">
+            Reset Game
+          </button>
+        </div>
+        <div className="game-board">
+          <Board
+            squares={current.squares}
+            onClick={(i) => handleClick(i)}
+            winningLine={winningLine}
+            rowCount={rowCount}
+            colCount={colCount}
+          />
+        </div>
+        <div className="game-info">
+          <Toggle
+            onText="Ascending"
+            offText="Descending"
+            togglePosition={historySequenceToggle}
+            onChange={(toggle) => setHistorySequenceToggle(toggle)}
+          />
+          <h3>Moves</h3>
+          <MoveList
+            history={history}
+            jumpTo={(stepNumber) => jumpTo(stepNumber)}
+            currentStep={stepNumber}
+            ascending={historySequenceToggle}
+            colCount={colCount}
+          />
+        </div>
       </div>
-      <div className="game-info">
-        <Toggle
-          onText="Ascending"
-          offText="Descending"
-          togglePosition={historySequenceToggle}
-          onChange={(toggle) => setHistorySequenceToggle(toggle)}
-        />
-        <h3>Moves</h3>
-        <MoveList
-          history={history}
-          jumpTo={(stepNumber) => jumpTo(stepNumber)}
-          currentStep={stepNumber}
-          ascending={historySequenceToggle}
-        />
-      </div>
-    </div>
+    </React.Fragment>
   );
 
   function handleClick(i) {
@@ -66,14 +84,14 @@ export function Game() {
     setStepNumber(currentHistory.length);
   }
 
-  function jumpTo(step) { 
+  function jumpTo(step) {
     setStepNumber(step);
   }
 }
 
 export function whosTurn(stepNumber) {
   return stepNumber % 2 === 0 ? "X" : "O";
-} 
+}
 
 function calculateWinner(squares) {
   const lines = [

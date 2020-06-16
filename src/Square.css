@@ -1,26 +1,29 @@
+:root {
+  --square-size: 30vmin;
+}
+
+@media only screen and (min-width: 460px) {
+  :root {
+    --square-size: 22vmin;
+  }
+}
+
 .square {
-  background: #fff;
-  border: 1px solid #999;
   float: left;
-  font-size: 24px;
-  font-weight: bold;
-  line-height: 34px;
-  height: 34px;
-  margin-right: -1px;
-  margin-top: -1px;
-  padding: 0;
+  width: var(--square-size);
+  height: var(--square-size);
   text-align: center;
-  width: 34px;
+  background: #fff;
+  font-size: calc(var(--square-size) - 2vmin);
+  font-weight: bold;
+  padding: 0px;
+  margin: 0px;
 }
 
 .winSquare {
   background: blue;
 }
 
-.square:focus {
-  outline: none;
-}
-
-.kbd-navigation .square:focus {
-  background: #ddd;
+.square:hover {
+  background-color: rebeccapurple;
 }

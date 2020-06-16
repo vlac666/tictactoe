@@ -10,25 +10,34 @@ export function Toggle({
 }) {
   return (
     <>
-      <label htmlFor={name + "true"}>Ascending</label>
-      <input
-        type="radio"
-        name={name}
-        id={name + "true"}
-        value={true}
-        onChange={() => onChange(true)}
-        checked={togglePosition}
-      />
-
-      <label htmlFor={name + "false"}>Descending</label>
-      <input
-        type="radio"
-        name={name}
-        id={name + "true"}
-        value={false}
-        onChange={() => onChange(false)}
-        checked={!togglePosition}
-      />
+      <div>
+        <label htmlFor={name + "true"}>
+          <input
+            type="radio"
+            name={name}
+            id={name + "true"}
+            className="toggleButton"
+            value={true}
+            onChange={() => onChange(true)}
+            checked={togglePosition}
+          />
+          {onText}
+        </label>
+      </div>
+      <div>
+        <label htmlFor={name + "false"}>
+          <input
+            type="radio"
+            name={name}
+            id={name + "true"}
+            className="toggleButton"
+            value={false}
+            onChange={() => onChange(false)}
+            checked={!togglePosition}
+          />
+          {offText}
+        </label>
+      </div>
     </>
   );
 }
