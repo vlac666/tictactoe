@@ -30,7 +30,7 @@ export default function Spalsh() {
 
     return (
         <React.Fragment>
-            <h1>Splash is working</h1>
+            <h1>Splash is working - or is it? mo ha ha</h1>
             <div style={style}>
                 <Toggle name="gameToggle" togglePosition={showGame} onChange={setShowGame}></Toggle>
             </div>
