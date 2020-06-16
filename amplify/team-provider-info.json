@@ -1,0 +1,15 @@
+{
+    "dev": {
+        "awscloudformation": {
+            "AuthRoleName": "amplify-flickflack-dev-104812-authRole",
+            "UnauthRoleArn": "arn:aws:iam::834313074348:role/amplify-flickflack-dev-104812-unauthRole",
+            "AuthRoleArn": "arn:aws:iam::834313074348:role/amplify-flickflack-dev-104812-authRole",
+            "Region": "eu-west-2",
+            "DeploymentBucketName": "amplify-flickflack-dev-104812-deployment",
+            "UnauthRoleName": "amplify-flickflack-dev-104812-unauthRole",
+            "StackName": "amplify-flickflack-dev-104812",
+            "StackId": "arn:aws:cloudformation:eu-west-2:834313074348:stack/amplify-flickflack-dev-104812/7fe95c10-afb6-11ea-9a6a-0ab07291f102",
+            "AmplifyAppId": "d1r0moj9v9i0tr"
+        }
+    }
+}
